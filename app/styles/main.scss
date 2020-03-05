@@ -14,8 +14,28 @@
 	display: flex;
 }
 
+%flex-w {
+	@extend %flex;
+	flex-wrap: wrap;
+}
+
+%flex-c {
+	@extend %flex;
+	align-items: center;
+}
+
+%flex-c-w {
+	@extend %flex-w;
+	align-items: center;
+}
+
 %flex-between {
 	@extend %flex;
+	justify-content: space-between;
+}
+
+%flex-between-w {
+	@extend %flex-w;
 	justify-content: space-between;
 }
 
@@ -24,13 +44,74 @@
 	align-items: center;
 }
 
+%flex-between-b {
+	@extend %flex-between;	
+	align-items: flex-end;
+}
+
+%flex-between-c-w {
+	@extend %flex-between-w;	
+	align-items: center;
+}
+
+%flex-around {
+	@extend %flex;
+	justify-content: space-around;
+}
+
+%flex-around-w {
+	@extend %flex-w;
+	justify-content: space-around;
+}
+
+%flex-around-c {
+	@extend %flex-around;	
+	align-items: center;
+}
+
+%flex-around-c-w {
+	@extend %flex-around-w;	
+	align-items: center;
+}
+
+%flex-start {
+	@extend %flex;
+	justify-content: flex-start;
+}
+
+%flex-start-c {
+	@extend %flex-start;	
+	align-items: center;
+}
+
+%flex-end {
+	@extend %flex;
+	justify-content: flex-end;
+}
+
+%flex-end-c {
+	@extend %flex-end;	
+	align-items: center;
+}
+
 %flex-center {
 	@extend %flex;
 	justify-content: center;
 }
 
+%flex-center-w {
+	@extend %flex-w;
+	justify-content: center;
+}
+
 %flex-center-c {
 	@extend %flex-center;
+	justify-content: center;
+	align-items: center;
+}
+
+%flex-center-c-w {
+	@extend %flex-center-w;
 	justify-content: center;
 	align-items: center;
 }

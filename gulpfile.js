@@ -36,8 +36,8 @@ var path = {
         fonts: 'app/fonts/**/*.*'
     },
     script: {
-    	jquery: 'node_modules/jquery/dist/jquery.min.js'
-    	// slick: 'node_modules/slick-carousel/slick/slick.min.js'
+    	jquery: 'node_modules/jquery/dist/jquery.min.js',
+    	slick: 'node_modules/slick-carousel/slick/slick.min.js'
     },
     clean: 'dist/**'
 };
@@ -49,7 +49,10 @@ gulp.task('serve', function() {
         }
     });
 
-    gulp.watch('app/**/*.*').on('change', browserSync.reload);
+    gulp.watch(path.watch.html).on('change', browserSync.reload);
+    gulp.watch(path.watch.js).on('change', browserSync.reload);
+    gulp.watch(path.watch.images).on('change', browserSync.reload);
+    gulp.watch(path.watch.fonts).on('change', browserSync.reload);
 });
 
 gulp.task('html', function () {
@@ -65,6 +68,7 @@ gulp.task('scss', function () {
         .pipe(prefixer())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.dist.css))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('scss:build', function () {
@@ -93,8 +97,8 @@ gulp.task('js:build', function () {
 
 gulp.task('scripts', function() {
 	return gulp.src([
-		path.script.jquery
-		// path.script.slick
+		path.script.jquery,
+		path.script.slick
 		])
 		.pipe(concat('libs.min.js'))
 		.pipe(gulp.dest(path.dist.js))
